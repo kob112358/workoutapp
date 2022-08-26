@@ -1,0 +1,11 @@
+ .nav {
+    background-color: #1282A2;
+ }
+
+ .auth:hover {
+    cursor: pointer;
+ }
+
+ .auth {
+    margin: 10px;
+ }

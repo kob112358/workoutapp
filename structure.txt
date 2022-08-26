@@ -1,0 +1,49 @@
+CREATE-LIFT
+ 0. uuid
+ 1. name
+ 2. url
+ 3. notes
+ 4. primary
+ 5. secondary
+ 6. who created
+ 7. when created
+ 8. who updated
+ 9. when updated
+ 10. version
+ 11. isactive
+
+primary key (uuid, version)
+
+CREATE-WORKOUT
+ 1. uuid
+ 2. creator
+ 3. name
+
+primary key uuid
+
+WORKOUT-LIFT MAPPING
+ 1. workout uuid
+ 2. lift uuid
+ 3. sets
+ 4. reps
+
+primary key (workout-uuid, lift-uuid)
+
+USERS
+ 0. uuid
+ 1. name
+ 2. password
+ 3. created date
+
+
+SWAGGER - for endpoints/APIs
+OAuth
+Access Code (Authorization Code Grant) - App has a backend
+Application (Client Credentials Grant) - only when User & App are the same entity (app has limited usage as it only serves one user)
+Implicit - works best if the App is a single-page app or a native mobile app
+Password - last resort, only if App & OAuth Server belong to the same entity
+
+
+PASSPORT - for authentication
+
+XcUFGQely1V6YRdtR-4SY5ImaSM
