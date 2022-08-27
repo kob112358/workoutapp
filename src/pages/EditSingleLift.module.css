@@ -1,4 +1,28 @@
+.add_form {
+    padding: 2%;
+    margin: 2%;
+}
+.muscle_groups {
+    display: flex;
+    justify-content: center;
+}
+
 .muscles {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 15%;
+    align-items: flex-start;
+}
+
+.add_form button {
+    background-color: #fefcfb;
+    color: #034078;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 2%;
+    border: none;
+}
+
+.add_form button:hover {
+    cursor: pointer;
 }

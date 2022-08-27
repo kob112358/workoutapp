@@ -8,6 +8,7 @@ import { useEffect, useContext, useState } from "react";
 import AuthContext from "../store/AuthContext";
 import ViewSingleLift from "../components/ViewSingleLift";
 import EditSingleLift from "./EditSingleLift";
+import ViewAllLifts from "../components/ViewAllLifts";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,12 +34,12 @@ function App() {
           if (data.user) {
             setUser(data.user);
             if (data.user.provider === "github") {
-              setId('github' + data.user.id);
+              setId("github" + data.user.id);
               setName(data.user.username);
             }
-            if(data.user.provider === 'google') {
-              setId('google' + data.user.id);
-              setName(data.user.displayName)
+            if (data.user.provider === "google") {
+              setId("google" + data.user.id);
+              setName(data.user.displayName);
             }
           }
         })
@@ -52,20 +53,21 @@ function App() {
   return (
     <div className={styles.App}>
       <Navbar user={user} />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route
-          path="/login"
-          element={user ? <Navigate to="/" /> : <Login />}
-          className={styles.listItem}
-        ></Route>
-        <Route
-          path="/addlift"
-          element={user ? <AddLift /> : <Navigate to="/login" />}
-        ></Route>
-        <Route path="/lift/:id" element={<ViewSingleLift />} />
-        <Route path="/lift/:id/edit" element={<EditSingleLift />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+            className={styles.listItem}
+          ></Route>
+          <Route
+            path="/lift/add"
+            element={user ? <AddLift /> : <Navigate to="/login" />}
+          ></Route>
+          <Route path="/lift/:id" element={<ViewSingleLift />} />
+          <Route path="/lift/:id/edit" element={<EditSingleLift />} />
+          <Route path="/lift/view-all" element={<ViewAllLifts />} />
+        </Routes>
     </div>
   );
 }

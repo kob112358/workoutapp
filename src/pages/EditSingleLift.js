@@ -6,6 +6,7 @@ import AuthContext from "../store/AuthContext";
 import { MUSCLE_GROUPS } from "../variables/muscles";
 import { useNavigate } from "react-router-dom";
 import styles from "./EditSingleLift.module.css";
+import Card from "../styles/Card.js";
 
 function EditSingleLift() {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ function EditSingleLift() {
       });
   };
   const cancelHandler = () => {
-    navigate(`/lift/${lift._id}`);
+    navigate(`/lift/view-all`);
   };
 
   const editLiftHandler = (e) => {
@@ -95,69 +96,77 @@ function EditSingleLift() {
   };
 
   return (
-    <>
-      Please edit lift id: {lift._id}
-      <form onSubmit={editLiftHandler}>
-        <label htmlFor="name">Name</label>
-        <input ref={nameRef} type="text" id="name" defaultValue={lift.name} />
-        <label htmlFor="video">Video</label>
-        <input
-          ref={videoRef}
-          type="text"
-          id="video"
-          placeholder="Youtube URL"
-        />
-        <label htmlFor="notes">Notes</label>
-        <input
-          ref={notesRef}
-          type="text"
-          id="notes"
-          defaultValue={lift.notes}
-        />
-        <div className={styles.muscles}>
-          Primary muscles:
-          {MUSCLE_GROUPS.map((muscle, index) => {
-            return (
-              <div className={styles.muscle_groups} key={index}>
-                <label htmlFor={muscle}>{muscle}</label>
-                <input
-                  id={muscle}
-                  type="checkbox"
-                  value={muscle}
-                  name={muscle}
-                  defaultChecked={lift.primary?.includes(muscle)}
-                  onClick={(e) => {
-                    primaryHandler(e, index);
-                  }}
-                ></input>
-              </div>
-            );
-          })}
+    <Card>
+      <form onSubmit={editLiftHandler} className={styles.add_form}>
+        Please edit lift id: {lift._id}
+        <div>
+          <label htmlFor="name">Name</label>
+          <input ref={nameRef} type="text" id="name" defaultValue={lift.name} />
         </div>
-        <div className={styles.muscles}>
-          Secondary muscles:
-          {MUSCLE_GROUPS.map((muscle, index) => {
-            return (
-              <div className={styles.muscle_groups} key={index}>
-                <label htmlFor={muscle + "secondary"}>{muscle}</label>
-                <input
-                  id={muscle + "secondary"}
-                  type="checkbox"
-                  value={muscle}
-                  name={muscle}
-                  defaultChecked={lift.secondary?.includes(muscle)}
-                  onClick={(e) => {
-                    secondaryHandler(e, index);
-                  }}
-                ></input>
-              </div>
-            );
-          })}
+        <div>
+          <label htmlFor="video">Video</label>
+          <input
+            ref={videoRef}
+            type="text"
+            id="video"
+            placeholder="Youtube URL"
+          />
+        </div>
+        <div>
+          <label htmlFor="notes">Notes</label>
+          <input
+            ref={notesRef}
+            type="text"
+            id="notes"
+            defaultValue={lift.notes}
+          />
+        </div>
+        <div className={styles.muscle_groups}>
+          <div className={styles.muscles}>
+            Primary muscles:
+            {MUSCLE_GROUPS.map((muscle, index) => {
+              return (
+                <div className={styles.muscle_groups} key={index}>
+                  <input
+                    id={muscle}
+                    type="checkbox"
+                    value={muscle}
+                    name={muscle}
+                    defaultChecked={lift.primary?.includes(muscle)}
+                    onClick={(e) => {
+                      primaryHandler(e, index);
+                    }}
+                  ></input>
+                  <label htmlFor={muscle}>{muscle}</label>
+                </div>
+              );
+            })}
+          </div>
+          <div className={styles.muscles}>
+            Secondary muscles:
+            {MUSCLE_GROUPS.map((muscle, index) => {
+              return (
+                <div className={styles.muscle_groups} key={index}>
+                  <input
+                    id={muscle + "secondary"}
+                    type="checkbox"
+                    value={muscle}
+                    name={muscle}
+                    defaultChecked={lift.secondary?.includes(muscle)}
+                    onClick={(e) => {
+                      secondaryHandler(e, index);
+                    }}
+                  ></input>
+                  <label htmlFor={muscle + "secondary"}>{muscle}</label>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <button onClick={editLiftHandler}>Save lift</button>
+        <button onClick={cancelHandler}>Cancel</button>
       </form>
-      <button onClick={cancelHandler}>Cancel</button>
-    </>
+    </Card>
   );
 }
 

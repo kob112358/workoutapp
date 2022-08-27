@@ -1,5 +1,9 @@
 .lift_card {
+    background-color: #1282a2;
+    border-radius: 5px;
+    padding: 1%;
     margin: 1%;
-    text-align: start;
-
+    width: 45%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
