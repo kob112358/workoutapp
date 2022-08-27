@@ -1,9 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
+import styles from './Homepage.module.css';
 
 const Homepage = () => {
     return (
-        <div>
-            This is your home page, please log in.
+        <div className={styles.routes}>
+            <Link className={styles.link} to="/lift/view-all">View All Lifts</Link>
+            <Link className={styles.link} to="/lift/add">Add Lift</Link>
+            <Link className={styles.link} to="/lift/add">Log workout</Link> 
+            <Link className={styles.link} to="/lift/add">View workouts</Link>
+            <Link className={styles.link} to="/lift/add">Create workout</Link>
         </div>
     );
 };

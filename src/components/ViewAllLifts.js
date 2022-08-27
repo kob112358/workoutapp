@@ -1,6 +1,7 @@
 import React from "react";
 import Lift from "./Lift";
 import { useEffect, useState } from "react";
+import styles from './ViewAllLifts.module.css';
 
 const ViewAllLifts = () => {
   const [allLifts, setAllLifts] = useState([]);
@@ -11,7 +12,7 @@ const ViewAllLifts = () => {
     getLifts();
   }, []);
   return (
-    <ol>{allLifts.length > 0 ? allLifts.map((li) => <Lift lift={li} key={li._id}/>) : "loading..."}</ol>
+    <div className={styles.all_lift_list}>{allLifts.length > 0 ? allLifts.map((li) => <Lift lift={li} key={li._id}/>) : "loading..."}</div>
   );
 };
 

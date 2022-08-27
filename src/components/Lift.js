@@ -6,9 +6,9 @@ const Lift = ({ lift }) => {
   const { name, _id } = lift;
   
   return (
-    <li>
-        <Link to={`/lift/${_id}`}>{name}</Link>
-    </li>
+    <>
+        <Link className={styles.lift_card} to={`/lift/${_id}`}>{name}</Link>
+    </>
   );
 };
 
