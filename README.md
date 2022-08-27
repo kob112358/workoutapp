@@ -20,3 +20,6 @@ Password - last resort, user hands PW credentials to application, only if App & 
 
 8/25
 Was able to implement mongodb with full crud. The U part was definitely the most intense part - learning how to use defaultValue & defaultChecked when editing existing lift's was great. I know there is a lot to learn in regards to standard folder practices and organization practices for true constant variables.
+
+8/26
+I got sick of the look of my different routes during testing, so I added some CSS to make it look more appealing, and also changed up where some of my routes were displayed.
