@@ -28,3 +28,4 @@ I got sick of the look of my different routes during testing, so I added some CS
 I started off by breaking out my express portion of my app onto it's own app. 
 Learned:
 when I call next() during express middleware, I need to 'return next()', otherwise the function will still call any lines after the next().
+I was able to slam my head into the wall for 10 minutes figuring out why my req.body wasn't sending to my post route, only to realize I hadn't needed to add a body-parser to my express app yet. body-parser.json() ftw.
