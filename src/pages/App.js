@@ -9,6 +9,7 @@ import AuthContext from "../store/AuthContext";
 import ViewSingleLift from "../components/ViewSingleLift";
 import EditSingleLift from "./EditSingleLift";
 import ViewAllLifts from "../components/ViewAllLifts";
+import AddWorkout from "./AddWorkout";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -67,6 +68,7 @@ function App() {
           <Route path="/lift/:id" element={<ViewSingleLift />} />
           <Route path="/lift/:id/edit" element={<EditSingleLift />} />
           <Route path="/lift/view-all" element={<ViewAllLifts />} />
+          <Route path="/workout/add" element={<AddWorkout />} />
         </Routes>
     </div>
   );

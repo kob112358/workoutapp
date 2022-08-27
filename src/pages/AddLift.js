@@ -73,6 +73,10 @@ function AddLift() {
     const notes = notesRef.current.value;
     onAddLift(name, video, notes);
   };
+
+  const cancelHandler = () => {
+    navigate('/');
+  }
   return (
     <Card>
       <form onSubmit={addLiftHandler} className={styles.add_form}>
@@ -149,6 +153,7 @@ function AddLift() {
           </div>
         </div>
         <button>Save lift</button>
+        <button onClick={cancelHandler}>Cancel</button>
       </form>
     </Card>
   );
