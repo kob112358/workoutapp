@@ -23,3 +23,8 @@ Was able to implement mongodb with full crud. The U part was definitely the most
 
 8/26
 I got sick of the look of my different routes during testing, so I added some CSS to make it look more appealing, and also changed up where some of my routes were displayed.
+
+8/27
+I started off by breaking out my express portion of my app onto it's own app. 
+Learned:
+when I call next() during express middleware, I need to 'return next()', otherwise the function will still call any lines after the next().

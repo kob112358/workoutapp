@@ -36,7 +36,7 @@ const ViewSingleLift = () => {
     await fetch(`/lift/${params.id}`, { method: "DELETE" })
       .then((res) => res.json())
       .catch((e) => console.log(e));
-    navigate(`/lift/add`);
+    navigate(`/lift/view-all`);
   };
   const cancelHandler = () => {
     navigate("/lift/view-all");
