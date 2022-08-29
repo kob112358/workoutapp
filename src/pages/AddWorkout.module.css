@@ -1,0 +1,33 @@
+.hr_style {
+    background-color: #034078;
+    border-color: #034078;
+    margin: 1% auto;
+    width: 75%;
+}
+
+.add_workout__form {
+    margin: 3% 20%;
+}
+
+.add_workout__form button {
+    background-color: #fefcfb;
+    color: #034078;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1%;
+    border: none;
+    width: 45%;
+    text-align: center;
+  }
+  
+  .add_workout__form button:hover {
+    cursor: pointer;
+  }
+
+.add_workout__lifts {
+    display: flex;
+}
+
+.view_all_lifts {
+    display: flex;
+}

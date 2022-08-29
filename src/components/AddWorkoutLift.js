@@ -1,4 +1,4 @@
-import React, {useRef, useContext} from "react";
+import React, {useRef} from "react";
 
 import styles from "./AddWorkoutLift.module.css";
 
@@ -9,20 +9,22 @@ const AddWorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
 
   const addLiftToWorkout = (e) => {
     e.preventDefault();
-    const sets = setsRef.current.value;
-    const reps = repsRef.current.value;
-    if(sets < 0 || sets > 100) {
-      alert('Your sets must be within the range of 0-100');
+    const sets = parseInt(setsRef.current.value);
+    const reps = parseInt(repsRef.current.value);
+    if(isNaN(sets) || sets < 0 || sets > 100) {
+      alert('Your sets must be a number within the range of 0-100');
       return;
     }
-    if(reps < 0 || reps > 100) {
-      alert('Your reps must be within the range of 0-100');
+    if(isNaN(reps) || reps < 0 || reps > 100) {
+      alert('Your reps must be a number within the range of 0-100');
       return;
     }
-    addLiftToWorkoutHandler(_id, sets, reps);
+    addLiftToWorkoutHandler(_id, sets, reps, name);
+    setsRef.current.value = 0;
+    repsRef.current.value = 0;
   }
   return (
-    <div className={styles.workout_lift}>
+    <div className={styles.add_workout_lift}>
       {name}
       <div>
         <label htmlFor="liftSets"># of sets</label>
