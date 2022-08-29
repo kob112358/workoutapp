@@ -53,6 +53,7 @@ const AddWorkout = () => {
           type="text"
           placeholder="workout name.."
           ref={workoutName}
+          required
         ></input>
         <button onClick={saveWorkout}>Save workout</button>
         <div>placeholder for category selector</div>
