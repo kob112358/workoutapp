@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import styles from "./AddWorkout.module.css";
-import WorkoutLift from "../components/WorkoutLift";
+import AddWorkoutLift from "../components/AddWorkoutLift";
 import AuthContext from "../store/AuthContext";
 
 const AddWorkout = () => {
@@ -58,7 +58,7 @@ const AddWorkout = () => {
         <div>placeholder for category selector</div>
         {lifts.length > 0
           ? lifts.map((lift, index) => (
-              <WorkoutLift
+              <AddWorkoutLift
                 addLiftToWorkoutHandler={addLiftToWorkoutHandler}
                 key={index}
                 lift={lift}

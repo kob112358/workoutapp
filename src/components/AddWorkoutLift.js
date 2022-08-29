@@ -1,8 +1,8 @@
 import React, {useRef, useContext} from "react";
 
-import styles from "./WorkoutLift.module.css";
+import styles from "./AddWorkoutLift.module.css";
 
-const WorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
+const AddWorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
   const { _id, name } = lift;
   const setsRef = useRef();
   const repsRef = useRef();
@@ -11,6 +11,14 @@ const WorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
     e.preventDefault();
     const sets = setsRef.current.value;
     const reps = repsRef.current.value;
+    if(sets < 0 || sets > 100) {
+      alert('Your sets must be within the range of 0-100');
+      return;
+    }
+    if(reps < 0 || reps > 100) {
+      alert('Your reps must be within the range of 0-100');
+      return;
+    }
     addLiftToWorkoutHandler(_id, sets, reps);
   }
   return (
@@ -29,4 +37,4 @@ const WorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
   );
 };
 
-export default WorkoutLift;
+export default AddWorkoutLift;

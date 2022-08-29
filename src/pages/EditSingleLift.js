@@ -101,7 +101,7 @@ function EditSingleLift() {
         Please edit lift id: {lift._id}
         <div>
           <label htmlFor="name">Name</label>
-          <input ref={nameRef} type="text" id="name" defaultValue={lift.name} />
+          <input ref={nameRef} type="text" id="name" defaultValue={lift.name} required />
         </div>
         <div>
           <label htmlFor="video">Video</label>

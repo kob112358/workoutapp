@@ -90,6 +90,7 @@ function AddLift() {
             type="text"
             id="name"
             placeholder="i.e. Bench Press"
+            required
           />
         </div>
         <div>
