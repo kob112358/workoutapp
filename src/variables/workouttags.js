@@ -1,0 +1,1 @@
+export const WORKOUT_TAGS = ['Push', 'Pull', 'Arms', 'Legs', '3 day', '4 day', '5 day', '6 day', 'Core', 'Cardio'];
