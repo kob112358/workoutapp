@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AddWorkoutLift.module.css";
 import ViewWorkoutLift from "../components/ViewWorkoutLift";
-import WorkoutLift from "../components/WorkoutLift";
+import AddWorkoutLift from "../components/AddWorkoutLift";
 import { v1 } from "uuid";
 import React, { useEffect, useState } from "react";
 
@@ -58,7 +58,7 @@ const AddWorkoutLift = () => {
       <div className={styles.view_all_lifts}>
         {lifts.length > 0
           ? lifts.map((lift) => (
-              <WorkoutLift
+              <AddWorkoutLift
                 addLiftToWorkoutHandler={addLiftToWorkoutHandler}
                 lift={lift}
                 key={v1()}

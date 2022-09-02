@@ -2,20 +2,26 @@ import React, { useRef, useContext, useState } from "react";
 import styles from "./AddWorkout.module.css";
 import AuthContext from "../store/AuthContext";
 import { WORKOUT_TAGS } from "../variables/workouttags";
+import { useNavigate } from "react-router-dom";
 
 const AddWorkout = () => {
   const workoutName = useRef();
   const workoutNotes = useRef();
   const [workoutTags, setWorkoutTags] = useState(
-    new Array(WORKOUT_TAGS.length).fill(false),
+    new Array(WORKOUT_TAGS.length).fill(false)
   );
-
+  const navigate = useNavigate();
   const auth = useContext(AuthContext);
 
   const saveWorkout = (e) => {
     e.preventDefault();
+    const workoutNameToSave = workoutName.current.value;
+    const tagsToSave = WORKOUT_TAGS.filter((tag, index) => {
+      return workoutTags[index];
+    });
     const bodyData = JSON.stringify({
-      workoutName: workoutName.current.value,
+      workoutName: workoutNameToSave,
+      tags: tagsToSave,
     });
     fetch("/workout/", {
       body: bodyData,
@@ -27,18 +33,23 @@ const AddWorkout = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?._id) {
-          workoutName.current.value = "";
+          //receive the workout id back and navigate to the view page
+          console.log("here is the data", data);
         }
       })
       .catch((e) => console.log(e));
   };
 
   const addTagHandler = (e, index) => {
-    setWorkoutTags(prevState => {
+    setWorkoutTags((prevState) => {
       let newState = [...prevState];
       newState[index] = e.target.checked;
       return newState;
-    })
+    });
+  };
+
+  const cancelHandler = () => {
+    navigate("/");
   };
 
   return auth.name.length > 0 ? (
@@ -54,7 +65,7 @@ const AddWorkout = () => {
         ></input>
         <label htmlFor="notes">Notes:</label>
         <input
-          type="text"
+          type="textarea"
           id="notes"
           placeholder="add notes.."
           ref={workoutNotes}
@@ -69,14 +80,13 @@ const AddWorkout = () => {
                   addTagHandler(e, index);
                 }}
               ></input>
-                <label htmlFor={tag}>{tag}</label>
+              <label htmlFor={tag}>{tag}</label>
             </div>
           );
         })}
         <button type="submit">Save workout</button>
+        <button onClick={cancelHandler}>Cancel</button>
       </form>
-      <hr className={styles.hr_style}></hr>
-      <div>placeholder for category selector</div>
     </div>
   ) : (
     <>Please log in</>

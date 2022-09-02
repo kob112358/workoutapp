@@ -1,16 +1,18 @@
 import styles from "./App.module.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import AddLift from "./AddLift";
-import Login from "./Login";
-import Homepage from "./Homepage";
+import Navbar from "./components/Navbar";
+import AddLift from "./pages/AddLift";
+import Login from "./pages/Login";
+import Homepage from "./pages/Homepage";
 import { useEffect, useContext, useState } from "react";
-import AuthContext from "../store/AuthContext";
-import ViewSingleLift from "../components/ViewSingleLift";
-import EditSingleLift from "./EditSingleLift";
-import ViewAllLifts from "../components/ViewAllLifts";
-import AddWorkout from "./AddWorkout";
-import ErrorPage from "../components/ErrorPage";
+import AuthContext from "./store/AuthContext";
+import ViewSingleLift from "./components/ViewSingleLift";
+import EditSingleLift from "./pages/EditSingleLift";
+import ViewAllLifts from "./components/ViewAllLifts";
+import AddWorkout from "./pages/AddWorkout";
+import ErrorPage from "./components/ErrorPage";
+import ViewAllWorkouts from "./pages/ViewAllWorkouts";
+import ViewSingleWorkout from "./pages/ViewSingleWorkout";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,10 +68,12 @@ function App() {
             path="/lift/add"
             element={user ? <AddLift /> : <Navigate to="/login" />}
           ></Route>
+          <Route path="/lift/view-all" element={<ViewAllLifts />} />
           <Route path="/lift/:id" element={<ViewSingleLift />} />
           <Route path="/lift/:id/edit" element={<EditSingleLift />} />
-          <Route path="/lift/view-all" element={<ViewAllLifts />} />
           <Route path="/workout/add" element={<AddWorkout />} />
+          <Route path="/workout/view-all" element={<ViewAllWorkouts />} />
+          <Route path="/workout/:id" element={<ViewSingleWorkout />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
     </div>
