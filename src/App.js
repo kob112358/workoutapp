@@ -10,9 +10,10 @@ import ViewSingleLift from "./components/ViewSingleLift";
 import EditSingleLift from "./pages/EditSingleLift";
 import ViewAllLifts from "./components/ViewAllLifts";
 import AddWorkout from "./pages/AddWorkout";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
 import ViewAllWorkouts from "./pages/ViewAllWorkouts";
 import ViewSingleWorkout from "./pages/ViewSingleWorkout";
+import EditSingleWorkout from "./pages/EditSingleWorkout";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -74,6 +75,7 @@ function App() {
           <Route path="/workout/add" element={<AddWorkout />} />
           <Route path="/workout/view-all" element={<ViewAllWorkouts />} />
           <Route path="/workout/:id" element={<ViewSingleWorkout />} />
+          <Route path="/workout/:id/edit" element={<EditSingleWorkout />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
     </div>

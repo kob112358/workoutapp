@@ -13,7 +13,10 @@ const ViewSingleWorkout = (props) => {
         fetch(location.pathname, {method: 'DELETE'}).then(res => res.json()).then(data => {navigate('/workout/view-all')}).catch(e => console.log(e));
     }
     const editWorkoutHandler = () => {
-
+      navigate(`/workout/${workout._id}/edit`);
+    }
+    const navigateToAllWorkoutHandler = () => {
+      navigate('/workout/view-all');
     }
     return (
         <Card>
@@ -27,6 +30,7 @@ const ViewSingleWorkout = (props) => {
           </div>
           <button onClick={editWorkoutHandler}>Edit</button>
           <button onClick={deleteWorkoutHandler}>Delete</button>
+          <button onClick={navigateToAllWorkoutHandler}>Back</button>
       </Card>
     );
 };

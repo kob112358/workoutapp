@@ -53,7 +53,7 @@ const ViewSingleLift = () => {
       <div className={styles.lift_buttons}>
         <button onClick={editHandler}>Edit</button>
         <button onClick={deleteHandler}>Delete</button>
-        <button onClick={cancelHandler}>Cancel</button>
+        <button onClick={cancelHandler}>Back</button>
       </div>
     </div>
   );
