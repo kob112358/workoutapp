@@ -98,7 +98,6 @@ function EditSingleLift() {
   return (
     <Card>
       <form onSubmit={editLiftHandler} className={styles.add_form}>
-        Please edit lift id: {lift._id}
         <div>
           <label htmlFor="name">Name</label>
           <input ref={nameRef} type="text" id="name" defaultValue={lift.name} required />

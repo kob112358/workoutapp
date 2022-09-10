@@ -75,8 +75,8 @@ function AddLift() {
   };
 
   const cancelHandler = () => {
-    navigate('/');
-  }
+    navigate("/");
+  };
   return (
     <Card>
       <form onSubmit={addLiftHandler} className={styles.add_form}>
@@ -153,8 +153,10 @@ function AddLift() {
             })}
           </div>
         </div>
-        <button>Save lift</button>
-        <button onClick={cancelHandler}>Cancel</button>
+        <div className={styles.addlift_buttons}>
+          <button>Save lift</button>
+          <button onClick={cancelHandler}>Cancel</button>
+        </div>
       </form>
     </Card>
   );
