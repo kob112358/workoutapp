@@ -8,6 +8,7 @@ const EditSingleWorkout = () => {
   const navigate = useNavigate();
   const params = useParams();
   const workoutName = useRef();
+  const workoutNotes = useRef();
   const [workout, setWorkout] = useState({});
   const [workoutTags, setWorkoutTags] = useState(
     new Array(WORKOUT_TAGS.length).fill(false)
@@ -17,7 +18,7 @@ const EditSingleWorkout = () => {
       .then((res) => res.json())
       .then((data) => {
         setWorkout(data);
-        setWorkoutTags(WORKOUT_TAGS.map(tag => data.tags.includes(tag)));
+        setWorkoutTags(WORKOUT_TAGS.map((tag) => data.tags.includes(tag)));
       })
       .catch((e) => console.log(e));
   }, [params.id]);
@@ -33,11 +34,11 @@ const EditSingleWorkout = () => {
   };
   const saveWorkoutHandler = () => {
     const updatedTags = WORKOUT_TAGS.filter((tag, index) => workoutTags[index]);
-    console.log(updatedTags);
     const workoutToEdit = {
       name: workoutName.current.value,
       tags: updatedTags,
-      _id: params.id
+      _id: params.id,
+      notes: workoutNotes.current.value,
     };
     fetch(`http://localhost:5000/workout/${params.id}`, {
       body: JSON.stringify(workoutToEdit),
@@ -48,7 +49,6 @@ const EditSingleWorkout = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         navigate(`/workout/${workout._id}`);
       })
       .catch((e) => console.log(e));
@@ -64,6 +64,14 @@ const EditSingleWorkout = () => {
           ref={workoutName}
         ></input>
       </div>
+      <label htmlFor="notes">Notes:</label>
+      <input
+        type="textarea"
+        id="notes"
+        name="notes"
+        defaultValue={workout.notes}
+        ref={workoutNotes}
+      ></input>
       <div>Creator: {workout.whoCreated}</div>
       <div>
         Tags:
@@ -85,8 +93,10 @@ const EditSingleWorkout = () => {
           );
         })}
       </div>
-      <button onClick={saveWorkoutHandler}>Save</button>
-      <button onClick={navigateToAllWorkoutHandler}>Cancel</button>
+      <div className={styles.workout_buttons}>
+        <button onClick={saveWorkoutHandler}>Save</button>
+        <button onClick={navigateToAllWorkoutHandler}>Cancel</button>
+      </div>
     </Card>
   ) : (
     <div>Loading workout...</div>

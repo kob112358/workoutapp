@@ -12,7 +12,7 @@ const SingleWorkoutCard = ({ workout }) => {
           <div>
             Tags:
             {workout.tags?.map((tag) => (
-              <> {tag}</>
+              <span key={tag}> {tag}</span>
             ))}
           </div>
         </Link>

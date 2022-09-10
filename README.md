@@ -40,11 +40,15 @@ Going through some form validation on the client side.
 I've been updating my workout structure on my API and client side. Where I'm at currently
 Workout CRUD
 C - X
-R - X(all) O(single)
-U - O
-D - O
+R - X(all) X(single)
+U - X
+D - X
+
+
+9/9
+I've been a little bit disrupted with the holiday weekend, but have been working on this still when I can. I've completed the CRUD for the workouts. Now I begin working on mapping lift's to each workout.
 Workout Lift CRUD
 C - O
-R - X
+R - O
 U - O
 D - O

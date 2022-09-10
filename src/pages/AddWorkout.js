@@ -3,6 +3,7 @@ import styles from "./AddWorkout.module.css";
 import AuthContext from "../store/AuthContext";
 import { WORKOUT_TAGS } from "../variables/workouttags";
 import { useNavigate } from "react-router-dom";
+import Card from "../styles/Card";
 
 const AddWorkout = () => {
   const workoutName = useRef();
@@ -53,9 +54,10 @@ const AddWorkout = () => {
   };
 
   return auth.name.length > 0 ? (
-    <div>
+    <Card>
       <form className={styles.add_workout__form} onSubmit={saveWorkout}>
-        <label htmlFor="workoutName">Workout name:</label>
+        <div>
+        <label htmlFor="workoutName">Name:</label>
         <input
           id="workoutName"
           type="text"
@@ -63,6 +65,8 @@ const AddWorkout = () => {
           ref={workoutName}
           required
         ></input>
+        </div>
+        <div>
         <label htmlFor="notes">Notes:</label>
         <input
           type="textarea"
@@ -70,6 +74,8 @@ const AddWorkout = () => {
           placeholder="add notes.."
           ref={workoutNotes}
         ></input>
+        </div>
+        <div>
         {WORKOUT_TAGS.map((tag, index) => {
           return (
             <div key={tag}>
@@ -84,10 +90,13 @@ const AddWorkout = () => {
             </div>
           );
         })}
-        <button type="submit">Save workout</button>
-        <button onClick={cancelHandler}>Cancel</button>
+        </div>
+        <div className={styles.add_workout__buttons}>
+          <button type="submit">Save workout</button>
+          <button onClick={cancelHandler}>Cancel</button>
+        </div>
       </form>
-    </div>
+    </Card>
   ) : (
     <>Please log in</>
   );

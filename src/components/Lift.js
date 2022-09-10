@@ -7,7 +7,7 @@ const Lift = ({ lift }) => {
   
   return (
     <>
-        <Link className={styles.lift_card} to={`/lift/${_id}`}>{name}</Link>
+        <Link className={styles.lift_card} to={`/lift/${_id}`}>{name.toLowerCase()}</Link>
     </>
   );
 };

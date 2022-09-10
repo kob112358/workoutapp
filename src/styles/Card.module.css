@@ -2,8 +2,8 @@
     background-color: #1282a2;
     border-radius: 5px;
     padding: 1%;
-    margin: 1%;
-    width: 45%;
+    margin: 1% auto;
+    width: 90%;
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -13,7 +13,7 @@
     color: #034078;
     padding: 1rem;
     border-radius: 5px;
-    margin: 2%;
+    margin: 2% auto;
     border: none;
 }
 

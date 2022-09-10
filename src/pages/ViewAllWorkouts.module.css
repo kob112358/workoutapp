@@ -1,4 +1,6 @@
 .view_workouts {
     display: flex;
     flex-direction: column;
+    margin: 2% auto;
 }
+

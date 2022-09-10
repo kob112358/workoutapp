@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
-import styles from "./AddWorkoutLift.module.css";
+import styles from "./WorkoutLift.module.css";
 
-const AddWorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
+const WorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
   const { _id, name } = lift;
   const setsRef = useRef();
   const repsRef = useRef();
@@ -38,4 +38,4 @@ const AddWorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
   );
 };
 
-export default AddWorkoutLift;
+export default WorkoutLift;

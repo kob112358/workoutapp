@@ -1,15 +1,29 @@
 .add_form {
-    padding: 2%;
-    margin: 2%;
+    padding: 2% auto;
+    margin: 2% auto;
 }
 .muscle_groups {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .muscles {
     display: flex;
     flex-direction: column;
-    width: 15%;
     align-items: flex-start;
+}
+
+.addlift_buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.addlift_buttons button {
+    background-color: #fefcfb;
+    color: #034078;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 2%;
+    border: none;
+    width: 40%;
 }

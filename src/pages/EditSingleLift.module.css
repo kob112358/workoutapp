@@ -1,16 +1,15 @@
 .add_form {
-    padding: 2%;
-    margin: 2%;
+    padding: 2% auto;
+    margin: 2% auto;
 }
 .muscle_groups {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .muscles {
     display: flex;
     flex-direction: column;
-    width: 15%;
     align-items: flex-start;
 }
 
