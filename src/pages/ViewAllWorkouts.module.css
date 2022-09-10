@@ -1,0 +1,4 @@
+.view_workouts {
+    display: flex;
+    flex-direction: column;
+}

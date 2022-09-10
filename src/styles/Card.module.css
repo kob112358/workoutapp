@@ -1,6 +1,22 @@
 .card {
-    color: #fefcfb;
     background-color: #1282a2;
-    border-radius: 10px;
+    border-radius: 5px;
+    padding: 1%;
+    margin: 1%;
+    width: 45%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.card button {
+    background-color: #fefcfb;
+    color: #034078;
+    padding: 1rem;
+    border-radius: 5px;
     margin: 2%;
+    border: none;
+}
+
+.card button:hover {
+    cursor: pointer;
 }

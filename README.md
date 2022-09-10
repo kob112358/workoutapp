@@ -35,3 +35,16 @@ Reiterating the need to 'return' a next call during error handling. If you just 
 
 8/29
 Going through some form validation on the client side.
+
+8/31
+I've been updating my workout structure on my API and client side. Where I'm at currently
+Workout CRUD
+C - X
+R - X(all) O(single)
+U - O
+D - O
+Workout Lift CRUD
+C - O
+R - X
+U - O
+D - O

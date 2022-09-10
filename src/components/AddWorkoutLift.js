@@ -1,5 +1,4 @@
 import React, {useRef} from "react";
-
 import styles from "./AddWorkoutLift.module.css";
 
 const AddWorkoutLift = ({ lift, addLiftToWorkoutHandler }) => {
