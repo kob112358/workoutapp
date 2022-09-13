@@ -12,7 +12,7 @@ const ViewAllLifts = () => {
     getLifts();
   }, []);
   return (
-    <div className={styles.all_lift_list}>{allLifts.length > 0 ? allLifts.map((li) => <Lift lift={li} key={li._id}/>) : "loading..."}</div>
+    <div><h1>All lifts</h1><div className={styles.all_lift_list}>{allLifts.length > 0 ? allLifts.map((li) => <Lift lift={li} key={li._id}/>) : "loading..."}</div></div>
   );
 };
 

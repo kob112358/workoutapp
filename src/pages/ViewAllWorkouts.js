@@ -20,8 +20,11 @@ const ViewAllWorkouts = () => {
   );
   console.log(workouts);
   return (
+    <div>
+      <h1>All workouts</h1>
     <div className={styles.view_workouts}>
       {workoutList}
+    </div>
     </div>
   );
 };

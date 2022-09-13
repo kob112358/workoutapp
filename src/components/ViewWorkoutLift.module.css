@@ -1,18 +1,17 @@
-.workout_lift {
-  background-color: #1282a2;
-  border-radius: 10px;
-  padding: 2rem;
-  margin: 2%;
+.workout_lift_buttons {
+  display: flex;
+  justify-content: space-around;
 }
 
-.workout_lift button {
+.workout_lift_buttons button {
   background-color: #fefcfb;
   color: #034078;
+  padding: 1rem;
   border-radius: 5px;
   margin: 2%;
   border: none;
 }
 
-.workout_lift button:hover {
-  cursor: pointer;
+.workout_lift {
+  text-transform: capitalize;
 }
