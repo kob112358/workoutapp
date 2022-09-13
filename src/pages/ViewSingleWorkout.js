@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Card from "../styles/Card";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./ViewSingleWorkout.module.css";
 import AddWorkoutLift from "./AddWorkoutLift";
-import { v1 } from "uuid";
 import ViewWorkoutLift from "../components/ViewWorkoutLift";
 
 const ViewSingleWorkout = (props) => {
@@ -11,13 +10,25 @@ const ViewSingleWorkout = (props) => {
   const navigate = useNavigate();
   const [workout, setWorkout] = useState({});
   const [showLifts, setShowLifts] = useState(false);
-  const [liftsToAdd, setLiftsToAdd] = useState([]);
-  const [liftsToAddList, setLiftsToAddList] = useState("");
+  const [workoutLifts, setWorkoutLifts] = useState([]);
+  const [workoutLiftsList, setWorkoutLiftsList] = useState("");
 
   useEffect(() => {
     fetch(location.pathname)
       .then((res) => res.json())
       .then((data) => setWorkout(data))
+      .catch((e) => console.log(e));
+  }, [location.pathname]);
+  const getWorkoutLifts = useCallback(() => {
+    fetch(`${location.pathname}/lift`)
+      .then((res) => res.json())
+      .then((data) => setWorkoutLifts(data))
+      .catch((e) => console.log(e));
+  }, [location.pathname]);
+  useEffect(() => {
+    fetch(`${location.pathname}/lift`)
+      .then((res) => res.json())
+      .then((data) => setWorkoutLifts(data))
       .catch((e) => console.log(e));
   }, [location.pathname]);
   const deleteWorkoutHandler = () => {
@@ -35,54 +46,49 @@ const ViewSingleWorkout = (props) => {
     navigate("/workout/view-all");
   };
   const saveWorkoutLifts = () => {
-    const workoutLift = liftsToAdd.map(lift => {return ({
-      liftId: lift.liftId,
-      name: lift.name,
-      reps: lift.reps,
-      sets: lift.sets,
-      workout: workout._id
-    })});
-    console.log(workoutLift);
-    //fetch(`http://localhost:5000/workout/${workout._id}`, {method: 'POST', body: JSON.stringify({})})
     setShowLifts(false);
   };
   const addLiftToWorkoutHandler = (id, sets, reps, name) => {
-    setLiftsToAdd((prevState) => {
-      let newState = prevState.map((lift) => lift);
-      return [...newState, { liftId: id, sets: sets, reps: reps, name: name }];
-    });
-  };
-  const deleteWorkoutLiftHandler = ({ liftId, sets, reps }) => {
-    setLiftsToAdd((prevState) => {
-      let newState = prevState.filter((lift) => {
-        if (
-          lift.liftId === liftId &&
-          lift.reps === reps &&
-          lift.sets === sets
-        ) {
-          return false;
-        } else {
-          return true;
-        }
-      });
-      return newState;
-    });
+    fetch(`${workout._id}/lift`, {
+      method: "POST",
+      body: JSON.stringify({
+        workoutId: workout._id,
+        liftId: id,
+        name: name,
+        sets: sets,
+        reps: reps,
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => getWorkoutLifts())
+      .catch((e) => console.log(e));
   };
   useEffect(
-    () =>
-      setLiftsToAddList(
-        liftsToAdd.map((lift) => {
+    () => {
+      const deleteWorkoutLiftHandler = (liftId) => {
+        fetch(`${workout._id}/lift`, {
+          method: "DELETE",
+          body: JSON.stringify({ id: liftId }),
+          headers: { "Content-Type": "application/json" },
+        })
+          .then((res) => res.json())
+          .then((data) => getWorkoutLifts())
+          .catch((e) => console.log("error occured, ", e));
+      };
+      setWorkoutLiftsList(
+        workoutLifts.map((lift) => {
           return (
             <ViewWorkoutLift
               lift={lift}
               deleteWorkoutLift={deleteWorkoutLiftHandler}
-              key={v1()}
+              key={lift._id}
               saveWorkout={showLifts}
             />
           );
         })
-      ),
-    [liftsToAdd, showLifts]
+      )},
+    [workoutLifts, showLifts, workout._id, getWorkoutLifts]
   );
   return (
     <>
@@ -113,10 +119,12 @@ const ViewSingleWorkout = (props) => {
           <button onClick={navigateToAllWorkoutHandler}>Back</button>
         </div>
       </Card>
-      {liftsToAddList.length > 0 ? (
-        liftsToAddList
+      {workoutLifts.length > 0 ? (
+        workoutLiftsList
+      ) : showLifts ? (
+        ""
       ) : (
-        showLifts ? '' : <>Click edit lifts to add..</>
+        <>Click edit lifts to add..</>
       )}
       <hr></hr>
       {showLifts ? (

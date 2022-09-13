@@ -34,8 +34,7 @@ const AddWorkout = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?._id) {
-          //receive the workout id back and navigate to the view page
-          console.log("here is the data", data);
+          navigate(`/workout/${data._id}`);
         }
       })
       .catch((e) => console.log(e));

@@ -18,7 +18,6 @@ const ViewAllWorkouts = () => {
   ) : (
     <>"Please add workouts.."</>
   );
-  console.log(workouts);
   return (
     <div>
       <h1>All workouts</h1>
