@@ -1,0 +1,26 @@
+.add_routine__form {
+    margin: 2% auto;
+    padding: 2% auto;
+  }
+  
+  .add_routine__lifts {
+    display: flex;
+  }
+  
+  .view_all_lifts {
+    display: flex;
+  }
+  
+  .add_routine__buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  .add_routine__buttons button {
+    background-color: #fefcfb;
+    color: #034078;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 2%;
+    border: none;
+    width: 40%;
+  }

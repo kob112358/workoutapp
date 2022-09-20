@@ -5,9 +5,9 @@ import Card from "../styles/Card";
 const ViewWorkoutLift = ({ lift, deleteWorkoutLift, saveWorkout }) => {
   const deleteWorkoutLiftHandler = (e) => {
     e.preventDefault();
-    console.log(lift._id);
     deleteWorkoutLift(lift._id);
   };
+  console.log(lift);
   return (
     <Card>
       <div className={styles.workout_lift}>
