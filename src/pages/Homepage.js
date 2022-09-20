@@ -11,16 +11,22 @@ const Homepage = () => {
         <Link className={styles.link} to="/lift/add">
           Add Lift
         </Link>
-        <Link className={styles.link} to="/lift/add">
-          Log workout
-        </Link>
         <Link className={styles.link} to="/workout/view-all">
           View all workouts
         </Link>
         <Link className={styles.link} to="/workout/add">
-          Create workout
+          Add workout
         </Link>
-        <div className={styles.link}>Add routines</div>
+        <Link className={styles.link} to="/lift/add">
+          Log workout
+        </Link>
+        <Link className={styles.link} to="/routine/view-all">
+          View all routines
+        </Link>
+        <Link className={styles.link} to="/routine/add">
+          Add routine
+        </Link>
+
     </div>
   );
 };

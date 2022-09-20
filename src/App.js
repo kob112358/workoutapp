@@ -14,6 +14,10 @@ import ErrorPage from "./pages/ErrorPage";
 import ViewAllWorkouts from "./pages/ViewAllWorkouts";
 import ViewSingleWorkout from "./pages/ViewSingleWorkout";
 import EditSingleWorkout from "./pages/EditSingleWorkout";
+import ViewAllRoutes from "./pages/ViewAllRoutines";
+import EditSingleRoutine from "./pages/EditSingleRoutine";
+import ViewSingleRoutine from './pages/ViewSingleRoutine.js';
+import AddRoutine from "./pages/AddRoutine";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -72,6 +76,10 @@ function App() {
           <Route path="/lift/view-all" element={<ViewAllLifts />} />
           <Route path="/lift/:id" element={<ViewSingleLift />} />
           <Route path="/lift/:id/edit" element={<EditSingleLift />} />
+          <Route path="/routine/view-all" element={<ViewAllRoutes />} />
+          <Route path="/routine/add" element={<AddRoutine />} />
+          <Route path="/routine/:id" element={<ViewSingleRoutine />} />
+          <Route path="/routine/:id/edit" element={<EditSingleRoutine />} />
           <Route path="/workout/add" element={<AddWorkout />} />
           <Route path="/workout/view-all" element={<ViewAllWorkouts />} />
           <Route path="/workout/:id" element={<ViewSingleWorkout />} />

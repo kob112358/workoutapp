@@ -52,3 +52,8 @@ C - O
 R - O
 U - O
 D - O
+
+9/12
+Did some CSS updating and made some decisions on data flow for adding lifts to workouts. I need to..
+1)add lift to DB when I click add lift
+2)delete lift from DB when I click delete
