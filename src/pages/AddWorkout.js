@@ -56,39 +56,39 @@ const AddWorkout = () => {
     <Card>
       <form className={styles.add_workout__form} onSubmit={saveWorkout}>
         <div>
-        <label htmlFor="workoutName">Name:</label>
-        <input
-          id="workoutName"
-          type="text"
-          placeholder="workout name.."
-          ref={workoutName}
-          required
-        ></input>
+          <label htmlFor="workoutName">Name:</label>
+          <input
+            id="workoutName"
+            type="text"
+            placeholder="workout name.."
+            ref={workoutName}
+            required
+          ></input>
         </div>
         <div>
-        <label htmlFor="notes">Notes:</label>
-        <input
-          type="textarea"
-          id="notes"
-          placeholder="add notes.."
-          ref={workoutNotes}
-        ></input>
+          <label htmlFor="notes">Notes:</label>
+          <input
+            type="textarea"
+            id="notes"
+            placeholder="add notes.."
+            ref={workoutNotes}
+          ></input>
         </div>
         <div>
-        {WORKOUT_TAGS.map((tag, index) => {
-          return (
-            <div key={tag}>
-              <input
-                type="checkbox"
-                id={tag}
-                onChange={(e) => {
-                  addTagHandler(e, index);
-                }}
-              ></input>
-              <label htmlFor={tag}>{tag}</label>
-            </div>
-          );
-        })}
+          {WORKOUT_TAGS.map((tag, index) => {
+            return (
+              <div key={tag}>
+                <input
+                  type="checkbox"
+                  id={tag}
+                  onChange={(e) => {
+                    addTagHandler(e, index);
+                  }}
+                ></input>
+                <label htmlFor={tag}>{tag}</label>
+              </div>
+            );
+          })}
         </div>
         <div className={styles.add_workout__buttons}>
           <button type="submit">Save workout</button>

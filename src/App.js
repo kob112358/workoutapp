@@ -16,8 +16,9 @@ import ViewSingleWorkout from "./pages/ViewSingleWorkout";
 import EditSingleWorkout from "./pages/EditSingleWorkout";
 import ViewAllRoutes from "./pages/ViewAllRoutines";
 import EditSingleRoutine from "./pages/EditSingleRoutine";
-import ViewSingleRoutine from './pages/ViewSingleRoutine.js';
+import ViewSingleRoutine from "./pages/ViewSingleRoutine.js";
 import AddRoutine from "./pages/AddRoutine";
+import { RecordWorkout } from "./components/RecordWorkout";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -62,30 +63,31 @@ function App() {
   return (
     <div className={styles.App}>
       <Navbar user={user} />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route
-            path="/login"
-            element={user ? <Navigate to="/" /> : <Login />}
-            className={styles.listItem}
-          ></Route>
-          <Route
-            path="/lift/add"
-            element={user ? <AddLift /> : <Navigate to="/login" />}
-          ></Route>
-          <Route path="/lift/view-all" element={<ViewAllLifts />} />
-          <Route path="/lift/:id" element={<ViewSingleLift />} />
-          <Route path="/lift/:id/edit" element={<EditSingleLift />} />
-          <Route path="/routine/view-all" element={<ViewAllRoutes />} />
-          <Route path="/routine/add" element={<AddRoutine />} />
-          <Route path="/routine/:id" element={<ViewSingleRoutine />} />
-          <Route path="/routine/:id/edit" element={<EditSingleRoutine />} />
-          <Route path="/workout/add" element={<AddWorkout />} />
-          <Route path="/workout/view-all" element={<ViewAllWorkouts />} />
-          <Route path="/workout/:id" element={<ViewSingleWorkout />} />
-          <Route path="/workout/:id/edit" element={<EditSingleWorkout />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/" /> : <Login />}
+          className={styles.listItem}
+        ></Route>
+        <Route
+          path="/lift/add"
+          element={user ? <AddLift /> : <Navigate to="/login" />}
+        ></Route>
+        <Route path="/lift/view-all" element={<ViewAllLifts />} />
+        <Route path="/lift/:id" element={<ViewSingleLift />} />
+        <Route path="/lift/:id/edit" element={<EditSingleLift />} />
+        <Route path="/routine/view-all" element={<ViewAllRoutes />} />
+        <Route path="/routine/add" element={<AddRoutine />} />
+        <Route path="/routine/:id" element={<ViewSingleRoutine />} />
+        <Route path="/routine/:id/edit" element={<EditSingleRoutine />} />
+        <Route path="/workout/add" element={<AddWorkout />} />
+        <Route path="/workout/view-all" element={<ViewAllWorkouts />} />
+        <Route path="/workout/:id" element={<ViewSingleWorkout />} />
+        <Route path="/workout/:id/record" element={<RecordWorkout />} />
+        <Route path="/workout/:id/edit" element={<EditSingleWorkout />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
     </div>
   );
 }

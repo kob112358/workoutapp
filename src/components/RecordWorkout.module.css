@@ -1,0 +1,9 @@
+.recordlift_buttons button {
+    background-color: #fefcfb;
+    color: #034078;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 2%;
+    border: none;
+    width: 40%;
+}
