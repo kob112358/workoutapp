@@ -11,6 +11,7 @@ function AddLift() {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const nameRef = useRef(null);
+  const isTimedRef = useRef(false);
   const videoRef = useRef(null);
   const notesRef = useRef(null);
   const [primary, setPrimary] = useState(
@@ -20,7 +21,7 @@ function AddLift() {
     new Array(MUSCLE_GROUPS.length).fill(false)
   );
 
-  const onAddLift = (name, video, notes) => {
+  const onAddLift = (name, video, notes, isTimed) => {
     const primaryMusclesToAdd = MUSCLE_GROUPS.filter(
       (muscle, index) => primary[index] === true
     );
@@ -30,6 +31,7 @@ function AddLift() {
     const liftToAdd = {
       name: name,
       video: video,
+      isTimed: isTimed,
       notes: notes,
       creator: auth.name,
       primary: primaryMusclesToAdd,
@@ -71,7 +73,8 @@ function AddLift() {
     const name = nameRef.current.value;
     const video = videoRef.current.value;
     const notes = notesRef.current.value;
-    onAddLift(name, video, notes);
+    const isTimed = isTimedRef.current.checked;
+    onAddLift(name, video, notes, isTimed);
   };
 
   const cancelHandler = () => {
@@ -100,6 +103,15 @@ function AddLift() {
             type="text"
             id="video"
             placeholder="Youtube URL"
+          />
+        </div>
+        <div>
+          <label htmlFor="isTimed">Timed</label>
+          <input
+            ref={isTimedRef}
+            type="checkbox"
+            id="isTimed"
+            defaultChecked="false"
           />
         </div>
         <div>
