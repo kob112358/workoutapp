@@ -7,15 +7,26 @@ const ViewWorkoutLift = ({ lift, deleteWorkoutLift, saveWorkout }) => {
     e.preventDefault();
     deleteWorkoutLift(lift._id);
   };
-  console.log(lift);
+  let timedOrSets = lift.isTimed ? (
+    <>Timed: {lift.time}</>
+  ) : (
+    <>
+      {" "}
+      <div>Sets: {lift.sets}</div>
+      <div>Reps: {lift.reps}</div>
+    </>
+  );
   return (
     <Card>
       <div className={styles.workout_lift}>
         <div>Name: {lift.liftName.toLowerCase()}</div>
-        <div>Sets: {lift.sets}</div>
-        <div>Reps: {lift.reps}</div>
+        {timedOrSets}
         <div className={styles.workout_lift_buttons}>
-        {saveWorkout ? (<button onClick={deleteWorkoutLiftHandler}>Delete</button>) : ''}
+          {saveWorkout ? (
+            <button onClick={deleteWorkoutLiftHandler}>Delete</button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </Card>

@@ -2,6 +2,10 @@
     padding: 2% auto;
     margin: 2% auto;
 }
+
+.add_form.timed {
+    align-self: start;
+}
 .muscle_groups {
     display: flex;
     justify-content: space-around;

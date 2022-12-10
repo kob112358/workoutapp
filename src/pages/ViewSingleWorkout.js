@@ -48,7 +48,7 @@ const ViewSingleWorkout = (props) => {
   const saveWorkoutLifts = () => {
     setShowLifts(false);
   };
-  const addLiftToWorkoutHandler = (id, sets, reps, name) => {
+  const addLiftToWorkoutHandler = (id, sets = 0, reps = 0, time = 0, name) => {
     fetch(`${workout._id}/lift`, {
       method: "POST",
       body: JSON.stringify({
@@ -57,6 +57,7 @@ const ViewSingleWorkout = (props) => {
         name: name,
         sets: sets,
         reps: reps,
+        time: time
       }),
       headers: { "Content-Type": "application/json" },
     })

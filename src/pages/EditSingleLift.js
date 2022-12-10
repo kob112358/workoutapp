@@ -14,6 +14,7 @@ function EditSingleLift() {
   const nameRef = useRef(null);
   const videoRef = useRef(null);
   const notesRef = useRef(null);
+  const isTimedRef = useRef(false);
   const [lift, setLift] = useState("");
   const [primary, setPrimary] = useState(new Array(11).fill(false));
   const [secondary, setSecondary] = useState(new Array(11).fill(false));
@@ -36,7 +37,7 @@ function EditSingleLift() {
     };
     getLift();
   }, [params]);
-  const onEditLift = (name, video, notes) => {
+  const onEditLift = (name, video, notes, isTimed) => {
     const primaryToAdd = MUSCLE_GROUPS.filter(
       (muscle, index) => primary[index]
     );
@@ -49,6 +50,7 @@ function EditSingleLift() {
       notes: notes,
       creator: auth.name,
       id: lift._id,
+      isTimed: isTimed,
       primary: primaryToAdd,
       secondary: secondaryToAdd,
     };
@@ -77,7 +79,8 @@ function EditSingleLift() {
     const name = nameRef.current.value;
     const video = videoRef.current.value;
     const notes = notesRef.current.value;
-    onEditLift(name, video, notes);
+    const isTimed = isTimedRef.current.checked;
+    onEditLift(name, video, notes, isTimed);
   };
 
   const primaryHandler = (e, index) => {
@@ -109,6 +112,15 @@ function EditSingleLift() {
             type="text"
             id="video"
             placeholder="Youtube URL"
+          />
+        </div>
+        <div>
+          <label htmlFor="isTimed">Timed</label>
+          <input
+            ref={isTimedRef}
+            type="checkbox"
+            id="isTimed"
+            defaultChecked={lift.isTimed}
           />
         </div>
         <div>
