@@ -106,21 +106,20 @@ function AddLift() {
           />
         </div>
         <div>
-          <label htmlFor="isTimed">Timed</label>
-          <input
-            ref={isTimedRef}
-            type="checkbox"
-            id="isTimed"
-            defaultChecked="false"
-          />
-        </div>
-        <div>
           <label htmlFor="notes">Notes</label>
           <input
             ref={notesRef}
             type="text"
             id="notes"
             placeholder="i.e. keep elbows in"
+          />
+        </div>
+        <div className={styles.add_form.timed}>
+          <label htmlFor="isTimed">Timed</label>
+          <input
+            ref={isTimedRef}
+            type="checkbox"
+            id="isTimed"
           />
         </div>
         <div className={styles.muscle_groups}>

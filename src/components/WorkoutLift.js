@@ -30,7 +30,7 @@ const WorkoutLift = ({ lift, addLiftToWorkout }) => {
       }
     }
 
-    addLiftToWorkout(_id, sets = 0, reps = 0, time = 0, name);
+    addLiftToWorkout(_id, sets, reps, time, name);
     setsRef.current.value = 0;
     repsRef.current.value = 0;
   };
